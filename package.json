@@ -9,6 +9,8 @@
     "start": "webpack-dev-server"
   },
   "dependencies": {
+    "@stomp/stompjs": "^6.1.2",
+    "sockjs-client": "^1.5.2",
     "vue": "^3.2.30"
   },
   "devDependencies": {
