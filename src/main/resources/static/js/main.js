@@ -1,7 +1,18 @@
-import { createApp } from 'vue'
+import Vue from 'vue'
 import App from 'pages/App.vue'
-import { connect } from "./util/ws";
+import VueResource from 'vue-resource'
+import { connect } from "./util/ws"
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
-connect()
+if (frontendData.profile) {
+    connect()
+}
 
-createApp(App).mount('#app')
+Vue.use(Vuetify)
+Vue.use(VueResource)
+
+new Vue({
+    el: '#app',
+    render: a => a(App)
+})

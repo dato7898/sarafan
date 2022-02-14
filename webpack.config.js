@@ -1,4 +1,3 @@
-
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 
@@ -7,19 +6,15 @@ module.exports = {
     devtool: 'source-map',
     entry: path.join(__dirname, 'src', 'main', 'resources', 'static', 'js', 'main.js'),
     devServer: {
-        static: {
-            directory: path.join(__dirname, 'dist')
-        },
+        contentBase: './dist',
         compress: true,
         port: 8000,
         allowedHosts: [
             'localhost:9000'
         ],
-        client: {
-            logging: 'error'
-        }
+        stats: 'errors-only',
+        clientLogLevel: 'error',
     },
-    stats: 'errors-only',
     module: {
         rules: [
             {
@@ -35,6 +30,13 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader'
+                ]
             }
         ]
     },
